@@ -32,7 +32,7 @@ typeof SuppressedError === "function" ? SuppressedError : function (error, suppr
  * Copyright 2019 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const t$2=globalThis,e$2=t$2.ShadowRoot&&(void 0===t$2.ShadyCSS||t$2.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,s$2=Symbol(),o$4=new WeakMap;let n$3 = class n{constructor(t,e,o){if(this._$cssResult$=true,o!==s$2)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=t,this.t=e;}get styleSheet(){let t=this.o;const s=this.t;if(e$2&&void 0===t){const e=void 0!==s&&1===s.length;e&&(t=o$4.get(s)),void 0===t&&((this.o=t=new CSSStyleSheet).replaceSync(this.cssText),e&&o$4.set(s,t));}return t}toString(){return this.cssText}};const r$4=t=>new n$3("string"==typeof t?t:t+"",void 0,s$2),i$3=(t,...e)=>{const o=1===t.length?t[0]:e.reduce((e,s,o)=>e+(t=>{if(true===t._$cssResult$)return t.cssText;if("number"==typeof t)return t;throw Error("Value passed to 'css' function must be a 'css' function result: "+t+". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.")})(s)+t[o+1],t[0]);return new n$3(o,t,s$2)},S$1=(s,o)=>{if(e$2)s.adoptedStyleSheets=o.map(t=>t instanceof CSSStyleSheet?t:t.styleSheet);else for(const e of o){const o=document.createElement("style"),n=t$2.litNonce;void 0!==n&&o.setAttribute("nonce",n),o.textContent=e.cssText,s.appendChild(o);}},c$2=e$2?t=>t:t=>t instanceof CSSStyleSheet?(t=>{let e="";for(const s of t.cssRules)e+=s.cssText;return r$4(e)})(t):t;
+const t$3=globalThis,e$2=t$3.ShadowRoot&&(void 0===t$3.ShadyCSS||t$3.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,s$2=Symbol(),o$4=new WeakMap;let n$3 = class n{constructor(t,e,o){if(this._$cssResult$=true,o!==s$2)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=t,this.t=e;}get styleSheet(){let t=this.o;const s=this.t;if(e$2&&void 0===t){const e=void 0!==s&&1===s.length;e&&(t=o$4.get(s)),void 0===t&&((this.o=t=new CSSStyleSheet).replaceSync(this.cssText),e&&o$4.set(s,t));}return t}toString(){return this.cssText}};const r$4=t=>new n$3("string"==typeof t?t:t+"",void 0,s$2),i$3=(t,...e)=>{const o=1===t.length?t[0]:e.reduce((e,s,o)=>e+(t=>{if(true===t._$cssResult$)return t.cssText;if("number"==typeof t)return t;throw Error("Value passed to 'css' function must be a 'css' function result: "+t+". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.")})(s)+t[o+1],t[0]);return new n$3(o,t,s$2)},S$1=(s,o)=>{if(e$2)s.adoptedStyleSheets=o.map(t=>t instanceof CSSStyleSheet?t:t.styleSheet);else for(const e of o){const o=document.createElement("style"),n=t$3.litNonce;void 0!==n&&o.setAttribute("nonce",n),o.textContent=e.cssText,s.appendChild(o);}},c$2=e$2?t=>t:t=>t instanceof CSSStyleSheet?(t=>{let e="";for(const s of t.cssRules)e+=s.cssText;return r$4(e)})(t):t;
 
 /**
  * @license
@@ -45,7 +45,7 @@ const t$2=globalThis,e$2=t$2.ShadowRoot&&(void 0===t$2.ShadyCSS||t$2.ShadyCSS.na
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const t$1=globalThis,i$1=t=>t,s$1=t$1.trustedTypes,e=s$1?s$1.createPolicy("lit-html",{createHTML:t=>t}):void 0,h="$lit$",o$2=`lit$${Math.random().toFixed(9).slice(2)}$`,n$1="?"+o$2,r$2=`<${n$1}>`,l=document,c=()=>l.createComment(""),a=t=>null===t||"object"!=typeof t&&"function"!=typeof t,u=Array.isArray,d=t=>u(t)||"function"==typeof t?.[Symbol.iterator],f="[ \t\n\f\r]",v=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,_=/-->/g,m=/>/g,p=RegExp(`>|${f}(?:([^\\s"'>=/]+)(${f}*=${f}*(?:[^ \t\n\f\r"'\`<>=]|("|')|))|$)`,"g"),g=/'/g,$=/"/g,y=/^(?:script|style|textarea|title)$/i,x=t=>(i,...s)=>({_$litType$:t,strings:i,values:s}),b=x(1),E=Symbol.for("lit-noChange"),A=Symbol.for("lit-nothing"),C=new WeakMap,P=l.createTreeWalker(l,129);function V(t,i){if(!u(t)||!t.hasOwnProperty("raw"))throw Error("invalid template strings array");return void 0!==e?e.createHTML(i):i}const N=(t,i)=>{const s=t.length-1,e=[];let n,l=2===i?"<svg>":3===i?"<math>":"",c=v;for(let i=0;i<s;i++){const s=t[i];let a,u,d=-1,f=0;for(;f<s.length&&(c.lastIndex=f,u=c.exec(s),null!==u);)f=c.lastIndex,c===v?"!--"===u[1]?c=_:void 0!==u[1]?c=m:void 0!==u[2]?(y.test(u[2])&&(n=RegExp("</"+u[2],"g")),c=p):void 0!==u[3]&&(c=p):c===p?">"===u[0]?(c=n??v,d=-1):void 0===u[1]?d=-2:(d=c.lastIndex-u[2].length,a=u[1],c=void 0===u[3]?p:'"'===u[3]?$:g):c===$||c===g?c=p:c===_||c===m?c=v:(c=p,n=void 0);const x=c===p&&t[i+1].startsWith("/>")?" ":"";l+=c===v?s+r$2:d>=0?(e.push(a),s.slice(0,d)+h+s.slice(d)+o$2+x):s+o$2+(-2===d?i:x);}return [V(t,l+(t[s]||"<?>")+(2===i?"</svg>":3===i?"</math>":"")),e]};class S{constructor({strings:t,_$litType$:i},e){let r;this.parts=[];let l=0,a=0;const u=t.length-1,d=this.parts,[f,v]=N(t,i);if(this.el=S.createElement(f,e),P.currentNode=this.el.content,2===i||3===i){const t=this.el.content.firstChild;t.replaceWith(...t.childNodes);}for(;null!==(r=P.nextNode())&&d.length<u;){if(1===r.nodeType){if(r.hasAttributes())for(const t of r.getAttributeNames())if(t.endsWith(h)){const i=v[a++],s=r.getAttribute(t).split(o$2),e=/([.?@])?(.*)/.exec(i);d.push({type:1,index:l,name:e[2],strings:s,ctor:"."===e[1]?I:"?"===e[1]?L:"@"===e[1]?z:H}),r.removeAttribute(t);}else t.startsWith(o$2)&&(d.push({type:6,index:l}),r.removeAttribute(t));if(y.test(r.tagName)){const t=r.textContent.split(o$2),i=t.length-1;if(i>0){r.textContent=s$1?s$1.emptyScript:"";for(let s=0;s<i;s++)r.append(t[s],c()),P.nextNode(),d.push({type:2,index:++l});r.append(t[i],c());}}}else if(8===r.nodeType)if(r.data===n$1)d.push({type:2,index:l});else {let t=-1;for(;-1!==(t=r.data.indexOf(o$2,t+1));)d.push({type:7,index:l}),t+=o$2.length-1;}l++;}}static createElement(t,i){const s=l.createElement("template");return s.innerHTML=t,s}}function M(t,i,s=t,e){if(i===E)return i;let h=void 0!==e?s._$Co?.[e]:s._$Cl;const o=a(i)?void 0:i._$litDirective$;return h?.constructor!==o&&(h?._$AO?.(false),void 0===o?h=void 0:(h=new o(t),h._$AT(t,s,e)),void 0!==e?(s._$Co??=[])[e]=h:s._$Cl=h),void 0!==h&&(i=M(t,h._$AS(t,i.values),h,e)),i}class R{constructor(t,i){this._$AV=[],this._$AN=void 0,this._$AD=t,this._$AM=i;}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}u(t){const{el:{content:i},parts:s}=this._$AD,e=(t?.creationScope??l).importNode(i,true);P.currentNode=e;let h=P.nextNode(),o=0,n=0,r=s[0];for(;void 0!==r;){if(o===r.index){let i;2===r.type?i=new k(h,h.nextSibling,this,t):1===r.type?i=new r.ctor(h,r.name,r.strings,this,t):6===r.type&&(i=new Z(h,this,t)),this._$AV.push(i),r=s[++n];}o!==r?.index&&(h=P.nextNode(),o++);}return P.currentNode=l,e}p(t){let i=0;for(const s of this._$AV) void 0!==s&&(void 0!==s.strings?(s._$AI(t,s,i),i+=s.strings.length-2):s._$AI(t[i])),i++;}}class k{get _$AU(){return this._$AM?._$AU??this._$Cv}constructor(t,i,s,e){this.type=2,this._$AH=A,this._$AN=void 0,this._$AA=t,this._$AB=i,this._$AM=s,this.options=e,this._$Cv=e?.isConnected??true;}get parentNode(){let t=this._$AA.parentNode;const i=this._$AM;return void 0!==i&&11===t?.nodeType&&(t=i.parentNode),t}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(t,i=this){t=M(this,t,i),a(t)?t===A||null==t||""===t?(this._$AH!==A&&this._$AR(),this._$AH=A):t!==this._$AH&&t!==E&&this._(t):void 0!==t._$litType$?this.$(t):void 0!==t.nodeType?this.T(t):d(t)?this.k(t):this._(t);}O(t){return this._$AA.parentNode.insertBefore(t,this._$AB)}T(t){this._$AH!==t&&(this._$AR(),this._$AH=this.O(t));}_(t){this._$AH!==A&&a(this._$AH)?this._$AA.nextSibling.data=t:this.T(l.createTextNode(t)),this._$AH=t;}$(t){const{values:i,_$litType$:s}=t,e="number"==typeof s?this._$AC(t):(void 0===s.el&&(s.el=S.createElement(V(s.h,s.h[0]),this.options)),s);if(this._$AH?._$AD===e)this._$AH.p(i);else {const t=new R(e,this),s=t.u(this.options);t.p(i),this.T(s),this._$AH=t;}}_$AC(t){let i=C.get(t.strings);return void 0===i&&C.set(t.strings,i=new S(t)),i}k(t){u(this._$AH)||(this._$AH=[],this._$AR());const i=this._$AH;let s,e=0;for(const h of t)e===i.length?i.push(s=new k(this.O(c()),this.O(c()),this,this.options)):s=i[e],s._$AI(h),e++;e<i.length&&(this._$AR(s&&s._$AB.nextSibling,e),i.length=e);}_$AR(t=this._$AA.nextSibling,s){for(this._$AP?.(false,true,s);t!==this._$AB;){const s=i$1(t).nextSibling;i$1(t).remove(),t=s;}}setConnected(t){ void 0===this._$AM&&(this._$Cv=t,this._$AP?.(t));}}class H{get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}constructor(t,i,s,e,h){this.type=1,this._$AH=A,this._$AN=void 0,this.element=t,this.name=i,this._$AM=e,this.options=h,s.length>2||""!==s[0]||""!==s[1]?(this._$AH=Array(s.length-1).fill(new String),this.strings=s):this._$AH=A;}_$AI(t,i=this,s,e){const h=this.strings;let o=false;if(void 0===h)t=M(this,t,i,0),o=!a(t)||t!==this._$AH&&t!==E,o&&(this._$AH=t);else {const e=t;let n,r;for(t=h[0],n=0;n<h.length-1;n++)r=M(this,e[s+n],i,n),r===E&&(r=this._$AH[n]),o||=!a(r)||r!==this._$AH[n],r===A?t=A:t!==A&&(t+=(r??"")+h[n+1]),this._$AH[n]=r;}o&&!e&&this.j(t);}j(t){t===A?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,t??"");}}class I extends H{constructor(){super(...arguments),this.type=3;}j(t){this.element[this.name]=t===A?void 0:t;}}class L extends H{constructor(){super(...arguments),this.type=4;}j(t){this.element.toggleAttribute(this.name,!!t&&t!==A);}}class z extends H{constructor(t,i,s,e,h){super(t,i,s,e,h),this.type=5;}_$AI(t,i=this){if((t=M(this,t,i,0)??A)===E)return;const s=this._$AH,e=t===A&&s!==A||t.capture!==s.capture||t.once!==s.once||t.passive!==s.passive,h=t!==A&&(s===A||e);e&&this.element.removeEventListener(this.name,this,s),h&&this.element.addEventListener(this.name,this,t),this._$AH=t;}handleEvent(t){"function"==typeof this._$AH?this._$AH.call(this.options?.host??this.element,t):this._$AH.handleEvent(t);}}class Z{constructor(t,i,s){this.element=t,this.type=6,this._$AN=void 0,this._$AM=i,this.options=s;}get _$AU(){return this._$AM._$AU}_$AI(t){M(this,t);}}const B=t$1.litHtmlPolyfillSupport;B?.(S,k),(t$1.litHtmlVersions??=[]).push("3.3.2");const D=(t,i,s)=>{const e=s?.renderBefore??i;let h=e._$litPart$;if(void 0===h){const t=s?.renderBefore??null;e._$litPart$=h=new k(i.insertBefore(c(),t),t,void 0,s??{});}return h._$AI(t),h};
+const t$2=globalThis,i$1=t=>t,s$1=t$2.trustedTypes,e=s$1?s$1.createPolicy("lit-html",{createHTML:t=>t}):void 0,h="$lit$",o$2=`lit$${Math.random().toFixed(9).slice(2)}$`,n$1="?"+o$2,r$2=`<${n$1}>`,l=document,c=()=>l.createComment(""),a=t=>null===t||"object"!=typeof t&&"function"!=typeof t,u=Array.isArray,d=t=>u(t)||"function"==typeof t?.[Symbol.iterator],f="[ \t\n\f\r]",v=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,_=/-->/g,m=/>/g,p=RegExp(`>|${f}(?:([^\\s"'>=/]+)(${f}*=${f}*(?:[^ \t\n\f\r"'\`<>=]|("|')|))|$)`,"g"),g=/'/g,$=/"/g,y=/^(?:script|style|textarea|title)$/i,x=t=>(i,...s)=>({_$litType$:t,strings:i,values:s}),b=x(1),E=Symbol.for("lit-noChange"),A=Symbol.for("lit-nothing"),C=new WeakMap,P=l.createTreeWalker(l,129);function V(t,i){if(!u(t)||!t.hasOwnProperty("raw"))throw Error("invalid template strings array");return void 0!==e?e.createHTML(i):i}const N=(t,i)=>{const s=t.length-1,e=[];let n,l=2===i?"<svg>":3===i?"<math>":"",c=v;for(let i=0;i<s;i++){const s=t[i];let a,u,d=-1,f=0;for(;f<s.length&&(c.lastIndex=f,u=c.exec(s),null!==u);)f=c.lastIndex,c===v?"!--"===u[1]?c=_:void 0!==u[1]?c=m:void 0!==u[2]?(y.test(u[2])&&(n=RegExp("</"+u[2],"g")),c=p):void 0!==u[3]&&(c=p):c===p?">"===u[0]?(c=n??v,d=-1):void 0===u[1]?d=-2:(d=c.lastIndex-u[2].length,a=u[1],c=void 0===u[3]?p:'"'===u[3]?$:g):c===$||c===g?c=p:c===_||c===m?c=v:(c=p,n=void 0);const x=c===p&&t[i+1].startsWith("/>")?" ":"";l+=c===v?s+r$2:d>=0?(e.push(a),s.slice(0,d)+h+s.slice(d)+o$2+x):s+o$2+(-2===d?i:x);}return [V(t,l+(t[s]||"<?>")+(2===i?"</svg>":3===i?"</math>":"")),e]};class S{constructor({strings:t,_$litType$:i},e){let r;this.parts=[];let l=0,a=0;const u=t.length-1,d=this.parts,[f,v]=N(t,i);if(this.el=S.createElement(f,e),P.currentNode=this.el.content,2===i||3===i){const t=this.el.content.firstChild;t.replaceWith(...t.childNodes);}for(;null!==(r=P.nextNode())&&d.length<u;){if(1===r.nodeType){if(r.hasAttributes())for(const t of r.getAttributeNames())if(t.endsWith(h)){const i=v[a++],s=r.getAttribute(t).split(o$2),e=/([.?@])?(.*)/.exec(i);d.push({type:1,index:l,name:e[2],strings:s,ctor:"."===e[1]?I:"?"===e[1]?L:"@"===e[1]?z:H}),r.removeAttribute(t);}else t.startsWith(o$2)&&(d.push({type:6,index:l}),r.removeAttribute(t));if(y.test(r.tagName)){const t=r.textContent.split(o$2),i=t.length-1;if(i>0){r.textContent=s$1?s$1.emptyScript:"";for(let s=0;s<i;s++)r.append(t[s],c()),P.nextNode(),d.push({type:2,index:++l});r.append(t[i],c());}}}else if(8===r.nodeType)if(r.data===n$1)d.push({type:2,index:l});else {let t=-1;for(;-1!==(t=r.data.indexOf(o$2,t+1));)d.push({type:7,index:l}),t+=o$2.length-1;}l++;}}static createElement(t,i){const s=l.createElement("template");return s.innerHTML=t,s}}function M(t,i,s=t,e){if(i===E)return i;let h=void 0!==e?s._$Co?.[e]:s._$Cl;const o=a(i)?void 0:i._$litDirective$;return h?.constructor!==o&&(h?._$AO?.(false),void 0===o?h=void 0:(h=new o(t),h._$AT(t,s,e)),void 0!==e?(s._$Co??=[])[e]=h:s._$Cl=h),void 0!==h&&(i=M(t,h._$AS(t,i.values),h,e)),i}class R{constructor(t,i){this._$AV=[],this._$AN=void 0,this._$AD=t,this._$AM=i;}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}u(t){const{el:{content:i},parts:s}=this._$AD,e=(t?.creationScope??l).importNode(i,true);P.currentNode=e;let h=P.nextNode(),o=0,n=0,r=s[0];for(;void 0!==r;){if(o===r.index){let i;2===r.type?i=new k(h,h.nextSibling,this,t):1===r.type?i=new r.ctor(h,r.name,r.strings,this,t):6===r.type&&(i=new Z(h,this,t)),this._$AV.push(i),r=s[++n];}o!==r?.index&&(h=P.nextNode(),o++);}return P.currentNode=l,e}p(t){let i=0;for(const s of this._$AV) void 0!==s&&(void 0!==s.strings?(s._$AI(t,s,i),i+=s.strings.length-2):s._$AI(t[i])),i++;}}class k{get _$AU(){return this._$AM?._$AU??this._$Cv}constructor(t,i,s,e){this.type=2,this._$AH=A,this._$AN=void 0,this._$AA=t,this._$AB=i,this._$AM=s,this.options=e,this._$Cv=e?.isConnected??true;}get parentNode(){let t=this._$AA.parentNode;const i=this._$AM;return void 0!==i&&11===t?.nodeType&&(t=i.parentNode),t}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(t,i=this){t=M(this,t,i),a(t)?t===A||null==t||""===t?(this._$AH!==A&&this._$AR(),this._$AH=A):t!==this._$AH&&t!==E&&this._(t):void 0!==t._$litType$?this.$(t):void 0!==t.nodeType?this.T(t):d(t)?this.k(t):this._(t);}O(t){return this._$AA.parentNode.insertBefore(t,this._$AB)}T(t){this._$AH!==t&&(this._$AR(),this._$AH=this.O(t));}_(t){this._$AH!==A&&a(this._$AH)?this._$AA.nextSibling.data=t:this.T(l.createTextNode(t)),this._$AH=t;}$(t){const{values:i,_$litType$:s}=t,e="number"==typeof s?this._$AC(t):(void 0===s.el&&(s.el=S.createElement(V(s.h,s.h[0]),this.options)),s);if(this._$AH?._$AD===e)this._$AH.p(i);else {const t=new R(e,this),s=t.u(this.options);t.p(i),this.T(s),this._$AH=t;}}_$AC(t){let i=C.get(t.strings);return void 0===i&&C.set(t.strings,i=new S(t)),i}k(t){u(this._$AH)||(this._$AH=[],this._$AR());const i=this._$AH;let s,e=0;for(const h of t)e===i.length?i.push(s=new k(this.O(c()),this.O(c()),this,this.options)):s=i[e],s._$AI(h),e++;e<i.length&&(this._$AR(s&&s._$AB.nextSibling,e),i.length=e);}_$AR(t=this._$AA.nextSibling,s){for(this._$AP?.(false,true,s);t!==this._$AB;){const s=i$1(t).nextSibling;i$1(t).remove(),t=s;}}setConnected(t){ void 0===this._$AM&&(this._$Cv=t,this._$AP?.(t));}}class H{get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}constructor(t,i,s,e,h){this.type=1,this._$AH=A,this._$AN=void 0,this.element=t,this.name=i,this._$AM=e,this.options=h,s.length>2||""!==s[0]||""!==s[1]?(this._$AH=Array(s.length-1).fill(new String),this.strings=s):this._$AH=A;}_$AI(t,i=this,s,e){const h=this.strings;let o=false;if(void 0===h)t=M(this,t,i,0),o=!a(t)||t!==this._$AH&&t!==E,o&&(this._$AH=t);else {const e=t;let n,r;for(t=h[0],n=0;n<h.length-1;n++)r=M(this,e[s+n],i,n),r===E&&(r=this._$AH[n]),o||=!a(r)||r!==this._$AH[n],r===A?t=A:t!==A&&(t+=(r??"")+h[n+1]),this._$AH[n]=r;}o&&!e&&this.j(t);}j(t){t===A?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,t??"");}}class I extends H{constructor(){super(...arguments),this.type=3;}j(t){this.element[this.name]=t===A?void 0:t;}}class L extends H{constructor(){super(...arguments),this.type=4;}j(t){this.element.toggleAttribute(this.name,!!t&&t!==A);}}class z extends H{constructor(t,i,s,e,h){super(t,i,s,e,h),this.type=5;}_$AI(t,i=this){if((t=M(this,t,i,0)??A)===E)return;const s=this._$AH,e=t===A&&s!==A||t.capture!==s.capture||t.once!==s.once||t.passive!==s.passive,h=t!==A&&(s===A||e);e&&this.element.removeEventListener(this.name,this,s),h&&this.element.addEventListener(this.name,this,t),this._$AH=t;}handleEvent(t){"function"==typeof this._$AH?this._$AH.call(this.options?.host??this.element,t):this._$AH.handleEvent(t);}}class Z{constructor(t,i,s){this.element=t,this.type=6,this._$AN=void 0,this._$AM=i,this.options=s;}get _$AU(){return this._$AM._$AU}_$AI(t){M(this,t);}}const B=t$2.litHtmlPolyfillSupport;B?.(S,k),(t$2.litHtmlVersions??=[]).push("3.3.2");const D=(t,i,s)=>{const e=s?.renderBefore??i;let h=e._$litPart$;if(void 0===h){const t=s?.renderBefore??null;e._$litPart$=h=new k(i.insertBefore(c(),t),t,void 0,s??{});}return h._$AI(t),h};
 
 /**
  * @license
@@ -58,7 +58,7 @@ const t$1=globalThis,i$1=t=>t,s$1=t$1.trustedTypes,e=s$1?s$1.createPolicy("lit-h
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const t=t=>(e,o)=>{ void 0!==o?o.addInitializer(()=>{customElements.define(t,e);}):customElements.define(t,e);};
+const t$1=t=>(e,o)=>{ void 0!==o?o.addInitializer(()=>{customElements.define(t,e);}):customElements.define(t,e);};
 
 /**
  * @license
@@ -78,279 +78,179 @@ const cardStyles = i$3 `
   }
 
   ha-card {
-    padding: 16px;
+    padding: 16px 16px 12px;
   }
 
+  /* ── Header ── */
   .card-header {
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: 500;
-    margin-bottom: 16px;
     color: var(--primary-text-color);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--divider-color, #e0e0e0);
   }
 
+  .active-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 10px;
+    background: var(--primary-color);
+    color: var(--text-primary-color, #fff);
+    font-size: 0.7em;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  /* ── Sections ── */
   .section {
     margin-bottom: 16px;
   }
 
+  .section:last-child {
+    margin-bottom: 0;
+  }
+
   .section-title {
-    font-size: 0.85em;
-    font-weight: 500;
+    font-size: 0.72em;
+    font-weight: 700;
     color: var(--secondary-text-color);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
     margin-bottom: 8px;
   }
 
-  select,
-  input[type="number"],
-  input[type="datetime-local"] {
-    width: 100%;
-    padding: 8px 12px;
-    border: 1px solid var(--divider-color, #e0e0e0);
-    border-radius: 4px;
-    background: var(--card-background-color, #fff);
-    color: var(--primary-text-color);
-    font-size: 1em;
-    box-sizing: border-box;
+  /* ── Locked target chip ── */
+  .locked-target-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: color-mix(in srgb, var(--primary-color) 10%, transparent);
+    color: var(--primary-color);
+    font-size: 0.88em;
+    font-weight: 500;
+    border: 1.5px solid color-mix(in srgb, var(--primary-color) 30%, transparent);
   }
 
-  select:focus,
-  input:focus {
+  /* ── Presets ── */
+  .preset-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .preset-row select {
+    flex: 1;
+    padding: 9px 12px;
+    border: 1px solid var(--divider-color, #e0e0e0);
+    border-radius: 8px;
+    background: var(--card-background-color, #fff);
+    color: var(--primary-text-color);
+    font-size: 0.95em;
+    box-sizing: border-box;
+    transition: border-color 0.15s;
+    cursor: pointer;
+  }
+
+  .preset-row select:focus {
     outline: none;
     border-color: var(--primary-color);
   }
 
-  .action-toggle {
-    display: flex;
-    gap: 8px;
-  }
-
-  .action-toggle button {
-    flex: 1;
-    padding: 8px;
-    border: 1px solid var(--divider-color, #e0e0e0);
-    border-radius: 4px;
-    background: var(--card-background-color, #fff);
-    color: var(--primary-text-color);
-    cursor: pointer;
-    font-size: 0.95em;
-    transition: background 0.2s, color 0.2s;
-  }
-
-  .action-toggle button.active {
-    background: var(--primary-color);
-    color: var(--text-primary-color, #fff);
-    border-color: var(--primary-color);
-  }
-
-  .mode-toggle {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 8px;
-  }
-
-  .mode-toggle label {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    cursor: pointer;
-    font-size: 0.95em;
-  }
-
-  .control-buttons {
-    display: flex;
-    gap: 8px;
-  }
-
-  .btn-start {
-    flex: 2;
-    padding: 10px;
-    background: var(--primary-color);
-    color: var(--text-primary-color, #fff);
-    border: none;
-    border-radius: 4px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: opacity 0.2s;
-  }
-
-  .btn-start:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
-  .btn-cancel-all {
-    flex: 1;
-    padding: 10px;
-    background: var(--error-color, #f44336);
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 0.9em;
-    cursor: pointer;
-    transition: opacity 0.2s;
-  }
-
-  .btn-cancel-all:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
-  .error-message {
-    color: var(--error-color, #f44336);
-    font-size: 0.85em;
-    margin-top: 4px;
-    padding: 8px;
-    background: var(--error-color-background, rgba(244, 67, 54, 0.1));
-    border-radius: 4px;
-  }
-
-  .schedule-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .schedule-item {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding: 10px 12px;
-    border-radius: 6px;
-    border: 1px solid var(--divider-color, #e0e0e0);
-    background: var(--secondary-background-color, #fafafa);
-    gap: 8px;
-  }
-
-  .schedule-info {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .schedule-entity {
-    font-weight: 500;
-    font-size: 0.95em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .schedule-details {
-    font-size: 0.8em;
+  .empty-hint {
+    font-size: 0.82em;
     color: var(--secondary-text-color);
-    margin-top: 2px;
+    font-style: italic;
+    padding: 4px 0;
   }
 
-  .schedule-countdown {
-    font-size: 0.8em;
-    color: var(--primary-color);
+  /* ── Buttons ── */
+  .btn-secondary {
+    padding: 9px 14px;
+    background: transparent;
+    border: 1.5px solid var(--divider-color, #e0e0e0);
+    border-radius: 8px;
+    color: var(--primary-text-color);
+    font-size: 0.9em;
     font-weight: 500;
-    margin-top: 2px;
-  }
-
-  .status-badge {
-    font-size: 0.75em;
-    padding: 2px 8px;
-    border-radius: 12px;
-    color: #fff;
+    cursor: pointer;
     white-space: nowrap;
-    font-weight: 500;
+    transition: border-color 0.15s, background 0.15s;
   }
 
-  .btn-cancel-item {
-    padding: 4px 8px;
+  .btn-secondary:hover {
+    border-color: var(--primary-color);
+    background: color-mix(in srgb, var(--primary-color) 6%, transparent);
+  }
+
+  .btn-secondary.full-width {
+    width: 100%;
+    text-align: center;
+  }
+
+  .btn-delete-preset {
+    padding: 6px 10px;
     background: transparent;
     border: 1px solid var(--error-color, #f44336);
     color: var(--error-color, #f44336);
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 0.8em;
-    white-space: nowrap;
+    font-size: 0.85em;
+    transition: background 0.15s, color 0.15s;
+    flex-shrink: 0;
   }
 
-  .btn-cancel-item:hover {
+  .btn-delete-preset:hover {
     background: var(--error-color, #f44336);
     color: #fff;
   }
 
-  .idle-message {
-    color: var(--secondary-text-color);
-    font-size: 0.9em;
-    font-style: italic;
-    text-align: center;
-    padding: 12px;
-  }
-
-  .history-section {
-    margin-top: 12px;
-  }
-
-  .history-toggle {
-    background: none;
-    border: none;
-    color: var(--secondary-text-color);
-    cursor: pointer;
+  /* ── Error message ── */
+  .error-message {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    color: var(--error-color, #f44336);
     font-size: 0.85em;
-    padding: 4px 0;
-    text-decoration: underline;
-  }
-
-  .history-list {
-    margin-top: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .history-item {
-    font-size: 0.8em;
-    padding: 6px 10px;
-    border-radius: 4px;
-    background: var(--secondary-background-color, #fafafa);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .preset-section {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
-
-  .preset-section select {
-    flex: 1;
-  }
-
-  .btn-load-preset {
-    padding: 8px 12px;
-    background: var(--secondary-background-color, #f5f5f5);
-    border: 1px solid var(--divider-color, #e0e0e0);
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.9em;
-    white-space: nowrap;
+    padding: 10px 12px;
+    background: color-mix(in srgb, var(--error-color, #f44336) 10%, transparent);
+    border-radius: 8px;
   }
 
   @media (max-width: 400px) {
     ha-card {
-      padding: 12px;
-    }
-
-    .control-buttons {
-      flex-direction: column;
-    }
-
-    .schedule-item {
-      flex-wrap: wrap;
+      padding: 12px 12px 8px;
     }
   }
 `;
 
 const CARD_NAME = "once-timer-card";
 const CARD_EDITOR_NAME = "once-timer-card-editor";
-const DEFAULT_ALLOWED_DOMAINS = ["light", "switch", "fan", "media_player", "climate"];
+const DEFAULT_ALLOWED_DOMAINS = [
+    "light",
+    "switch",
+    "fan",
+    "media_player",
+    "climate",
+    "cover",
+    "lock",
+    "vacuum",
+    "input_boolean",
+    "automation",
+    "script",
+    "alarm_control_panel",
+];
+const DEFAULT_QUICK_DELAYS = [15, 30, 60, 120];
 const STATUS_COLORS = {
     scheduled: "var(--info-color, #039be5)",
     running: "var(--warning-color, #ff9800)",
@@ -370,6 +270,14 @@ async function savePreset(hass, params) {
 }
 async function loadPreset(hass, name) {
     await hass.callService("once_timer", "load_preset", { name });
+}
+async function deletePreset(hass, name) {
+    await hass.callService("once_timer", "delete_preset", { name });
+}
+
+function getFriendlyName(hass, entityId) {
+    const state = hass?.states[entityId];
+    return String(state?.attributes["friendly_name"] ?? entityId);
 }
 
 function formatRemainingTime(runAtIso) {
@@ -438,42 +346,411 @@ function validateStartInput(params) {
     return null;
 }
 
+const EN = {
+    target: "Target",
+    action: "Action",
+    time: "Time",
+    presets: "Presets",
+    status: "Status",
+    search: "Search entity…",
+    no_entity: "Select entity",
+    no_preset: "Select preset",
+    load: "Load",
+    save_preset: "Save as preset",
+    start_timer: "Start timer",
+    cancel_all: "Cancel all",
+    scheduling: "Scheduling…",
+    in_minutes: "In … minutes",
+    at_time: "At exact time",
+    minutes: "min",
+    no_timers: "No active timers",
+    show_history: "Show history",
+    hide_history: "Hide history",
+    cancel: "Cancel",
+    repeat: "Repeat",
+    delete: "Delete",
+    restart: "Restart",
+    duration: "Duration",
+    // service labels
+    turn_on: "Turn on",
+    turn_off: "Turn off",
+    toggle: "Toggle",
+    media_play: "Play",
+    media_pause: "Pause",
+    media_stop: "Stop",
+    media_next_track: "Next track",
+    media_previous_track: "Previous track",
+    volume_up: "Volume up",
+    volume_down: "Volume down",
+    volume_mute: "Mute",
+    open_cover: "Open",
+    close_cover: "Close",
+    stop_cover: "Stop",
+    start: "Start",
+    return_to_base: "Return to base",
+    lock: "Lock",
+    unlock: "Unlock",
+    trigger: "Trigger",
+    alarm_arm_home: "Arm home",
+    alarm_arm_away: "Arm away",
+    alarm_arm_night: "Arm night",
+    alarm_disarm: "Disarm",
+    increase_speed: "Speed up",
+    decrease_speed: "Speed down",
+    // status badges
+    scheduled: "Scheduled",
+    running: "Running",
+    done: "Done",
+    error: "Error",
+    cancelled: "Cancelled",
+};
+const DE = {
+    target: "Ziel",
+    action: "Aktion",
+    time: "Zeit",
+    presets: "Vorlagen",
+    status: "Status",
+    search: "Gerät suchen…",
+    no_entity: "Gerät auswählen",
+    no_preset: "Vorlage auswählen",
+    load: "Laden",
+    save_preset: "Als Vorlage speichern",
+    start_timer: "Timer starten",
+    cancel_all: "Alle abbrechen",
+    scheduling: "Wird geplant…",
+    in_minutes: "In … Minuten",
+    at_time: "Zur genauen Uhrzeit",
+    minutes: "min",
+    no_timers: "Keine aktiven Timer",
+    show_history: "Verlauf anzeigen",
+    hide_history: "Verlauf ausblenden",
+    cancel: "Abbrechen",
+    repeat: "Wiederholen",
+    delete: "Löschen",
+    restart: "Neu starten",
+    duration: "Dauer",
+    turn_on: "Einschalten",
+    turn_off: "Ausschalten",
+    toggle: "Umschalten",
+    media_play: "Abspielen",
+    media_pause: "Pausieren",
+    media_stop: "Stoppen",
+    media_next_track: "Nächster Titel",
+    media_previous_track: "Vorheriger Titel",
+    volume_up: "Lauter",
+    volume_down: "Leiser",
+    volume_mute: "Stumm",
+    open_cover: "Öffnen",
+    close_cover: "Schließen",
+    stop_cover: "Stopp",
+    start: "Starten",
+    return_to_base: "Zur Basis",
+    lock: "Sperren",
+    unlock: "Entsperren",
+    trigger: "Auslösen",
+    alarm_arm_home: "Zuhause scharf",
+    alarm_arm_away: "Abwesend scharf",
+    alarm_arm_night: "Nacht scharf",
+    alarm_disarm: "Deaktivieren",
+    increase_speed: "Schneller",
+    decrease_speed: "Langsamer",
+    scheduled: "Geplant",
+    running: "Läuft",
+    done: "Erledigt",
+    error: "Fehler",
+    cancelled: "Abgebrochen",
+};
+function t(lang, key) {
+    const dict = lang.startsWith("de") ? DE : EN;
+    return dict[key] ?? key;
+}
+
 let TargetSection = class TargetSection extends i {
-    get _filteredEntities() {
-        return Object.keys(this.hass.states)
-            .filter((id) => this.allowedDomains.some((d) => id.startsWith(d + ".")))
-            .sort();
+    constructor() {
+        super(...arguments);
+        this.selectedEntityId = "";
+        this.quickTargets = [];
+        this.showSearch = true;
+        this.lang = "en";
+        this._open = false;
+        this._search = "";
+        this._clickOutside = (e) => {
+            if (!e.composedPath().includes(this)) {
+                this._open = false;
+                this._search = "";
+            }
+        };
     }
-    _onChange(e) {
-        const value = e.target.value;
-        this.dispatchEvent(new CustomEvent("entity-changed", { detail: value, bubbles: true, composed: true }));
+    connectedCallback() {
+        super.connectedCallback();
+        document.addEventListener("click", this._clickOutside);
+    }
+    disconnectedCallback() {
+        super.disconnectedCallback();
+        document.removeEventListener("click", this._clickOutside);
+    }
+    get _entities() {
+        return Object.values(this.hass.states)
+            .filter((e) => this.allowedDomains.some((d) => e.entity_id.startsWith(d + ".")))
+            .map((e) => ({
+            entity_id: e.entity_id,
+            friendly_name: String(e.attributes["friendly_name"] ?? e.entity_id),
+        }))
+            .sort((a, b) => a.friendly_name.localeCompare(b.friendly_name));
+    }
+    _select(entityId) {
+        this._open = false;
+        this._search = "";
+        this.dispatchEvent(new CustomEvent("entity-changed", { detail: entityId, bubbles: true, composed: true }));
+    }
+    _toggleOpen() {
+        this._open = !this._open;
+        if (this._open) {
+            this.updateComplete.then(() => {
+                this.shadowRoot?.querySelector(".search-input")?.focus();
+            });
+        }
+        else {
+            this._search = "";
+        }
     }
     render() {
-        const entities = this._filteredEntities;
+        const entities = this._entities;
+        const selected = entities.find((e) => e.entity_id === this.selectedEntityId);
+        const q = this._search.toLowerCase();
+        const filtered = q
+            ? entities.filter((e) => e.friendly_name.toLowerCase().includes(q) || e.entity_id.toLowerCase().includes(q))
+            : entities;
         return b `
-      <select .value=${this.selectedEntityId} @change=${this._onChange}>
-        <option value="" ?selected=${!this.selectedEntityId}>-- Select entity --</option>
-        ${entities.map((id) => b `
-            <option value=${id} ?selected=${id === this.selectedEntityId}>${id}</option>
-          `)}
-      </select>
+      ${this.quickTargets.length > 0
+            ? b `
+            <div class="quick-targets">
+              ${this.quickTargets.map((id) => b `
+                  <button
+                    type="button"
+                    class="quick-chip ${this.selectedEntityId === id ? "active" : ""}"
+                    @click=${() => this._select(id)}
+                  >
+                    ${getFriendlyName(this.hass, id)}
+                  </button>
+                `)}
+            </div>
+          `
+            : ""}
+      ${this.showSearch ? b `<div class="combobox">
+        <button
+          class="trigger ${this._open ? "open" : ""}"
+          @click=${this._toggleOpen}
+          type="button"
+        >
+          <span class="trigger-content">
+            ${selected
+            ? b `
+                  <span class="selected-name">${selected.friendly_name}</span>
+                  <span class="selected-id">${selected.entity_id}</span>
+                `
+            : b `<span class="placeholder">${t(this.lang, "no_entity")}</span>`}
+          </span>
+          <svg class="chevron ${this._open ? "up" : ""}" viewBox="0 0 24 24" width="18" height="18">
+            <path d="M7 10l5 5 5-5z" fill="currentColor"/>
+          </svg>
+        </button>
+
+        ${this._open
+            ? b `
+              <div class="dropdown">
+                <div class="search-wrapper">
+                  <svg viewBox="0 0 24 24" width="16" height="16" class="search-icon">
+                    <path
+                      d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  <input
+                    class="search-input"
+                    type="text"
+                    placeholder="${t(this.lang, "search")}"
+                    .value=${this._search}
+                    @input=${(e) => (this._search = e.target.value)}
+                    @click=${(e) => e.stopPropagation()}
+                  />
+                </div>
+                <div class="options">
+                  ${filtered.length === 0
+                ? b `<div class="no-results">—</div>`
+                : filtered.map((entity) => b `
+                          <div
+                            class="option ${entity.entity_id === this.selectedEntityId
+                    ? "selected"
+                    : ""}"
+                            @click=${() => this._select(entity.entity_id)}
+                          >
+                            <span class="option-name">${entity.friendly_name}</span>
+                            <span class="option-id">${entity.entity_id}</span>
+                          </div>
+                        `)}
+                </div>
+              </div>
+            `
+            : ""}
+      </div>` : ""}
     `;
     }
 };
 TargetSection.styles = i$3 `
-    select {
-      width: 100%;
-      padding: 8px 12px;
-      border: 1px solid var(--divider-color, #e0e0e0);
-      border-radius: 4px;
+    :host {
+      display: block;
+      position: relative;
+    }
+    .quick-targets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .quick-chip {
+      padding: 5px 12px;
+      border: 1.5px solid var(--divider-color, #e0e0e0);
+      border-radius: 16px;
       background: var(--card-background-color, #fff);
       color: var(--primary-text-color);
-      font-size: 1em;
-      box-sizing: border-box;
+      cursor: pointer;
+      font-size: 0.82em;
+      font-weight: 500;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+      white-space: nowrap;
+      max-width: 160px;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-    select:focus {
-      outline: none;
+    .quick-chip:hover {
       border-color: var(--primary-color);
+      background: color-mix(in srgb, var(--primary-color) 8%, transparent);
+    }
+    .quick-chip.active {
+      background: var(--primary-color);
+      border-color: var(--primary-color);
+      color: var(--text-primary-color, #fff);
+    }
+    .combobox {
+      position: relative;
+    }
+    .trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      border: 1px solid var(--divider-color, #e0e0e0);
+      border-radius: 8px;
+      background: var(--card-background-color, #fff);
+      color: var(--primary-text-color);
+      cursor: pointer;
+      font-size: 0.95em;
+      text-align: left;
+      transition: border-color 0.15s;
+      box-sizing: border-box;
+      gap: 8px;
+    }
+    .trigger:hover,
+    .trigger.open {
+      border-color: var(--primary-color);
+    }
+    .trigger-content {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .selected-name {
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .selected-id {
+      font-size: 0.78em;
+      color: var(--secondary-text-color);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .placeholder {
+      color: var(--secondary-text-color);
+    }
+    .chevron {
+      flex-shrink: 0;
+      color: var(--secondary-text-color);
+      transition: transform 0.15s;
+    }
+    .chevron.up {
+      transform: rotate(180deg);
+    }
+    .dropdown {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      right: 0;
+      background: var(--card-background-color, #fff);
+      border: 1px solid var(--divider-color, #e0e0e0);
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+      z-index: 100;
+      overflow: hidden;
+    }
+    .search-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--divider-color, #e0e0e0);
+    }
+    .search-icon {
+      flex-shrink: 0;
+      color: var(--secondary-text-color);
+    }
+    .search-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      color: var(--primary-text-color);
+      font-size: 0.95em;
+      outline: none;
+    }
+    .search-input::placeholder {
+      color: var(--secondary-text-color);
+    }
+    .options {
+      max-height: 220px;
+      overflow-y: auto;
+    }
+    .option {
+      padding: 10px 12px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      transition: background 0.1s;
+    }
+    .option:hover {
+      background: var(--secondary-background-color, #f5f5f5);
+    }
+    .option.selected {
+      background: color-mix(in srgb, var(--primary-color) 10%, transparent);
+    }
+    .option-name {
+      font-weight: 500;
+      font-size: 0.9em;
+    }
+    .option-id {
+      font-size: 0.75em;
+      color: var(--secondary-text-color);
+    }
+    .no-results {
+      padding: 12px;
+      text-align: center;
+      color: var(--secondary-text-color);
+      font-size: 0.9em;
     }
   `;
 __decorate([
@@ -485,124 +762,208 @@ __decorate([
 __decorate([
     n({ type: Array })
 ], TargetSection.prototype, "allowedDomains", void 0);
+__decorate([
+    n({ type: Array })
+], TargetSection.prototype, "quickTargets", void 0);
+__decorate([
+    n({ type: Boolean })
+], TargetSection.prototype, "showSearch", void 0);
+__decorate([
+    n()
+], TargetSection.prototype, "lang", void 0);
+__decorate([
+    r()
+], TargetSection.prototype, "_open", void 0);
+__decorate([
+    r()
+], TargetSection.prototype, "_search", void 0);
 TargetSection = __decorate([
-    t("once-timer-target-section")
+    t$1("once-timer-target-section")
 ], TargetSection);
 
+const DOMAIN_SERVICES = {
+    light: ["turn_on", "turn_off", "toggle"],
+    switch: ["turn_on", "turn_off", "toggle"],
+    fan: ["turn_on", "turn_off", "toggle", "increase_speed", "decrease_speed"],
+    media_player: [
+        "media_play",
+        "media_pause",
+        "media_stop",
+        "media_next_track",
+        "media_previous_track",
+        "volume_up",
+        "volume_down",
+        "volume_mute",
+        "turn_on",
+        "turn_off",
+    ],
+    climate: ["turn_on", "turn_off"],
+    cover: ["open_cover", "close_cover", "stop_cover", "toggle"],
+    vacuum: ["start", "pause", "stop", "return_to_base"],
+    lock: ["lock", "unlock"],
+    input_boolean: ["turn_on", "turn_off", "toggle"],
+    automation: ["trigger", "turn_on", "turn_off"],
+    script: ["turn_on"],
+    alarm_control_panel: [
+        "alarm_arm_home",
+        "alarm_arm_away",
+        "alarm_arm_night",
+        "alarm_disarm",
+    ],
+};
+const DEFAULT_SERVICES = ["turn_on", "turn_off"];
+function getServicesForEntity(entityId) {
+    const domain = entityId.split(".")[0] ?? "";
+    return DOMAIN_SERVICES[domain] ?? DEFAULT_SERVICES;
+}
+
 let ActionSection = class ActionSection extends i {
+    constructor() {
+        super(...arguments);
+        this.selectedAction = "turn_off";
+        this.entityId = "";
+        this.lang = "en";
+    }
     _select(action) {
         this.dispatchEvent(new CustomEvent("action-changed", { detail: action, bubbles: true, composed: true }));
     }
     render() {
+        const services = getServicesForEntity(this.entityId);
+        // If currently selected action is not in the list for this entity, auto-select first
+        if (services.length > 0 && !services.includes(this.selectedAction)) {
+            // dispatch asynchronously to avoid updating parent during render
+            Promise.resolve().then(() => this._select(services[0]));
+        }
         return b `
-      <div class="action-toggle">
-        <button
-          class=${this.selectedAction === "turn_on" ? "active" : ""}
-          @click=${() => this._select("turn_on")}
-        >
-          Turn On
-        </button>
-        <button
-          class=${this.selectedAction === "turn_off" ? "active" : ""}
-          @click=${() => this._select("turn_off")}
-        >
-          Turn Off
-        </button>
+      <div class="chips">
+        ${services.map((svc) => b `
+            <button
+              class="chip ${this.selectedAction === svc ? "active" : ""}"
+              @click=${() => this._select(svc)}
+              type="button"
+            >
+              ${t(this.lang, svc) ?? svc}
+            </button>
+          `)}
       </div>
     `;
     }
 };
 ActionSection.styles = i$3 `
-    .action-toggle {
+    .chips {
       display: flex;
-      gap: 8px;
+      flex-wrap: wrap;
+      gap: 6px;
     }
-    .action-toggle button {
-      flex: 1;
-      padding: 8px;
-      border: 1px solid var(--divider-color, #e0e0e0);
-      border-radius: 4px;
+    .chip {
+      padding: 6px 14px;
+      border: 1.5px solid var(--divider-color, #e0e0e0);
+      border-radius: 20px;
       background: var(--card-background-color, #fff);
       color: var(--primary-text-color);
       cursor: pointer;
-      font-size: 0.95em;
-      transition: background 0.2s, color 0.2s;
+      font-size: 0.875em;
+      font-weight: 500;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+      white-space: nowrap;
     }
-    .action-toggle button.active {
-      background: var(--primary-color);
-      color: var(--text-primary-color, #fff);
+    .chip:hover {
       border-color: var(--primary-color);
+      background: color-mix(in srgb, var(--primary-color) 8%, transparent);
+    }
+    .chip.active {
+      background: var(--primary-color);
+      border-color: var(--primary-color);
+      color: var(--text-primary-color, #fff);
     }
   `;
 __decorate([
     n()
 ], ActionSection.prototype, "selectedAction", void 0);
+__decorate([
+    n()
+], ActionSection.prototype, "entityId", void 0);
+__decorate([
+    n()
+], ActionSection.prototype, "lang", void 0);
 ActionSection = __decorate([
-    t("once-timer-action-section")
+    t$1("once-timer-action-section")
 ], ActionSection);
 
 let TimeSection = class TimeSection extends i {
+    constructor() {
+        super(...arguments);
+        this.lang = "en";
+        this.showQuickDelays = true;
+        this.quickDelays = DEFAULT_QUICK_DELAYS;
+        this.showTimeInput = true;
+    }
+    _emit(event, detail) {
+        this.dispatchEvent(new CustomEvent(event, { detail, bubbles: true, composed: true }));
+    }
     _onModeChange(e) {
-        const value = e.target.value;
-        this.dispatchEvent(new CustomEvent("mode-changed", { detail: value, bubbles: true, composed: true }));
+        this._emit("mode-changed", e.target.value);
     }
     _onDelayChange(e) {
-        const value = parseFloat(e.target.value);
-        this.dispatchEvent(new CustomEvent("delay-changed", { detail: value, bubbles: true, composed: true }));
+        this._emit("delay-changed", parseFloat(e.target.value));
     }
     _onRunAtChange(e) {
-        const value = e.target.value;
-        // Convert local datetime-local value to ISO string
-        const date = new Date(value);
-        this.dispatchEvent(new CustomEvent("run-at-changed", {
-            detail: date.toISOString(),
-            bubbles: true,
-            composed: true,
-        }));
+        this._emit("run-at-changed", new Date(e.target.value).toISOString());
+    }
+    _formatQuickLabel(minutes) {
+        if (minutes < 60)
+            return `${minutes} ${t(this.lang, "minutes")}`;
+        const h = minutes / 60;
+        return h === Math.floor(h) ? `${h}h` : `${h.toFixed(1)}h`;
     }
     render() {
         return b `
-      <div class="mode-toggle">
-        <label>
-          <input
-            type="radio"
-            name="mode"
-            value="delay"
-            ?checked=${this.mode === "delay"}
-            @change=${this._onModeChange}
-          />
-          In X minutes
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="mode"
-            value="absolute_time"
-            ?checked=${this.mode === "absolute_time"}
-            @change=${this._onModeChange}
-          />
-          At exact time
-        </label>
-      </div>
+      ${this.showTimeInput ? b `
+        <div class="mode-toggle">
+          <label class="mode-label ${this.mode === "delay" ? "active" : ""}">
+            <input type="radio" name="mode" value="delay"
+              ?checked=${this.mode === "delay"} @change=${this._onModeChange} />
+            ${t(this.lang, "in_minutes")}
+          </label>
+          <label class="mode-label ${this.mode === "absolute_time" ? "active" : ""}">
+            <input type="radio" name="mode" value="absolute_time"
+              ?checked=${this.mode === "absolute_time"} @change=${this._onModeChange} />
+            ${t(this.lang, "at_time")}
+          </label>
+        </div>
+      ` : ""}
 
-      ${this.mode === "delay"
+      ${this.mode === "delay" || !this.showTimeInput
             ? b `
-            <input
-              type="number"
-              min="0.1"
-              max="10080"
-              step="0.5"
-              .value=${String(this.delayMinutes)}
-              @input=${this._onDelayChange}
-              placeholder="Minutes"
-            />
+            ${this.showQuickDelays && this.quickDelays.length > 0
+                ? b `
+                  <div class="quick-delays">
+                    ${this.quickDelays.map((m) => b `
+                        <button
+                          type="button"
+                          class="quick-chip ${this.delayMinutes === m ? "active" : ""}"
+                          @click=${() => this._emit("delay-changed", m)}
+                        >
+                          ${this._formatQuickLabel(m)}
+                        </button>
+                      `)}
+                  </div>
+                `
+                : ""}
+            ${this.showTimeInput ? b `
+              <div class="input-row">
+                <input
+                  type="number" min="0.1" max="10080" step="0.5"
+                  .value=${String(this.delayMinutes)}
+                  @input=${this._onDelayChange}
+                  placeholder="${t(this.lang, "minutes")}"
+                />
+                <span class="unit">${t(this.lang, "minutes")}</span>
+              </div>
+            ` : ""}
           `
             : b `
-            <input
-              type="datetime-local"
-              .value=${this.runAt}
-              @input=${this._onRunAtChange}
-            />
+            <input type="datetime-local" .value=${this.runAt} @input=${this._onRunAtChange} />
           `}
     `;
     }
@@ -610,26 +971,78 @@ let TimeSection = class TimeSection extends i {
 TimeSection.styles = i$3 `
     .mode-toggle {
       display: flex;
-      gap: 16px;
-      margin-bottom: 8px;
+      gap: 8px;
+      margin-bottom: 10px;
     }
-    .mode-toggle label {
+    .mode-label {
       display: flex;
       align-items: center;
       gap: 6px;
       cursor: pointer;
-      font-size: 0.95em;
+      font-size: 0.9em;
+      padding: 6px 12px;
+      border: 1.5px solid var(--divider-color, #e0e0e0);
+      border-radius: 20px;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .mode-label.active {
+      border-color: var(--primary-color);
+      background: color-mix(in srgb, var(--primary-color) 8%, transparent);
+      color: var(--primary-color);
+      font-weight: 500;
+    }
+    .mode-label input[type="radio"] {
+      display: none;
+    }
+    .quick-delays {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+    .quick-chip {
+      padding: 5px 12px;
+      border: 1.5px solid var(--divider-color, #e0e0e0);
+      border-radius: 16px;
+      background: var(--card-background-color, #fff);
+      color: var(--primary-text-color);
+      cursor: pointer;
+      font-size: 0.82em;
+      font-weight: 500;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+    .quick-chip:hover {
+      border-color: var(--primary-color);
+      background: color-mix(in srgb, var(--primary-color) 8%, transparent);
+    }
+    .quick-chip.active {
+      background: var(--primary-color);
+      border-color: var(--primary-color);
+      color: var(--text-primary-color, #fff);
+    }
+    .input-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .unit {
+      font-size: 0.9em;
+      color: var(--secondary-text-color);
+      white-space: nowrap;
     }
     input[type="number"],
     input[type="datetime-local"] {
+      flex: 1;
       width: 100%;
-      padding: 8px 12px;
+      padding: 10px 12px;
       border: 1px solid var(--divider-color, #e0e0e0);
-      border-radius: 4px;
+      border-radius: 8px;
       background: var(--card-background-color, #fff);
       color: var(--primary-text-color);
-      font-size: 1em;
+      font-size: 0.95em;
       box-sizing: border-box;
+      transition: border-color 0.15s;
     }
     input:focus {
       outline: none;
@@ -645,8 +1058,20 @@ __decorate([
 __decorate([
     n()
 ], TimeSection.prototype, "runAt", void 0);
+__decorate([
+    n()
+], TimeSection.prototype, "lang", void 0);
+__decorate([
+    n({ type: Boolean })
+], TimeSection.prototype, "showQuickDelays", void 0);
+__decorate([
+    n({ type: Array })
+], TimeSection.prototype, "quickDelays", void 0);
+__decorate([
+    n({ type: Boolean })
+], TimeSection.prototype, "showTimeInput", void 0);
 TimeSection = __decorate([
-    t("once-timer-time-section")
+    t$1("once-timer-time-section")
 ], TimeSection);
 
 let ControlSection = class ControlSection extends i {
@@ -655,6 +1080,10 @@ let ControlSection = class ControlSection extends i {
         this.loading = false;
         this.disabled = false;
         this.hasActive = false;
+        this.showCancelAll = true;
+        this.allowRepeat = false;
+        this.repeat = false;
+        this.lang = "en";
     }
     _onStart() {
         this.dispatchEvent(new CustomEvent("start", { bubbles: true, composed: true }));
@@ -662,66 +1091,121 @@ let ControlSection = class ControlSection extends i {
     _onCancelAll() {
         this.dispatchEvent(new CustomEvent("cancel-all", { bubbles: true, composed: true }));
     }
+    _onRepeatChange(e) {
+        this.dispatchEvent(new CustomEvent("repeat-changed", {
+            detail: e.target.checked,
+            bubbles: true,
+            composed: true,
+        }));
+    }
     render() {
         return b `
+      ${this.allowRepeat
+            ? b `
+            <label class="repeat-row">
+              <input type="checkbox" ?checked=${this.repeat} @change=${this._onRepeatChange} />
+              <span>${t(this.lang, "repeat")}</span>
+            </label>
+          `
+            : ""}
       <div class="control-buttons">
         <button
           class="btn-start"
           ?disabled=${this.disabled || this.loading}
           @click=${this._onStart}
+          type="button"
         >
-          ${this.loading ? "Scheduling…" : "▶ Start Timer"}
+          ${this.loading
+            ? b `<span class="spinner"></span> ${t(this.lang, "scheduling")}`
+            : t(this.lang, "start_timer")}
         </button>
-        <button
-          class="btn-cancel-all"
-          ?disabled=${!this.hasActive || this.loading}
-          @click=${this._onCancelAll}
-        >
-          Cancel All
-        </button>
+        ${this.showCancelAll && this.hasActive
+            ? b `
+              <button
+                class="btn-cancel-all"
+                ?disabled=${this.loading}
+                @click=${this._onCancelAll}
+                type="button"
+              >
+                ${t(this.lang, "cancel_all")}
+              </button>
+            `
+            : ""}
       </div>
     `;
     }
 };
 ControlSection.styles = i$3 `
+    .repeat-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88em;
+      color: var(--secondary-text-color);
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
     .control-buttons {
       display: flex;
       gap: 8px;
     }
     .btn-start {
-      flex: 2;
-      padding: 10px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 16px;
       background: var(--primary-color);
       color: var(--text-primary-color, #fff);
       border: none;
-      border-radius: 4px;
-      font-size: 1em;
+      border-radius: 8px;
+      font-size: 0.95em;
+      font-weight: 500;
       cursor: pointer;
-      transition: opacity 0.2s;
+      transition: opacity 0.15s, filter 0.15s;
+    }
+    .btn-start:hover:not(:disabled) {
+      filter: brightness(1.1);
     }
     .btn-start:disabled {
       opacity: 0.5;
       cursor: not-allowed;
     }
     .btn-cancel-all {
-      flex: 1;
-      padding: 10px;
+      padding: 12px 16px;
+      background: transparent;
+      color: var(--error-color, #f44336);
+      border: 1.5px solid var(--error-color, #f44336);
+      border-radius: 8px;
+      font-size: 0.9em;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+    .btn-cancel-all:hover:not(:disabled) {
       background: var(--error-color, #f44336);
       color: #fff;
-      border: none;
-      border-radius: 4px;
-      font-size: 0.9em;
-      cursor: pointer;
-      transition: opacity 0.2s;
     }
     .btn-cancel-all:disabled {
       opacity: 0.5;
       cursor: not-allowed;
     }
+    .spinner {
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      flex-shrink: 0;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
     @media (max-width: 400px) {
-      .control-buttons {
-        flex-direction: column;
-      }
+      .control-buttons { flex-direction: column; }
     }
   `;
 __decorate([
@@ -733,8 +1217,20 @@ __decorate([
 __decorate([
     n({ type: Boolean })
 ], ControlSection.prototype, "hasActive", void 0);
+__decorate([
+    n({ type: Boolean })
+], ControlSection.prototype, "showCancelAll", void 0);
+__decorate([
+    n({ type: Boolean })
+], ControlSection.prototype, "allowRepeat", void 0);
+__decorate([
+    n({ type: Boolean })
+], ControlSection.prototype, "repeat", void 0);
+__decorate([
+    n()
+], ControlSection.prototype, "lang", void 0);
 ControlSection = __decorate([
-    t("once-timer-control-section")
+    t$1("once-timer-control-section")
 ], ControlSection);
 
 let StatusSection = class StatusSection extends i {
@@ -743,6 +1239,8 @@ let StatusSection = class StatusSection extends i {
         this.schedules = [];
         this.history = [];
         this.showHistory = false;
+        this.showProgressBar = true;
+        this.lang = "en";
         this._tick = 0;
         this._showHistory = false;
     }
@@ -750,12 +1248,21 @@ let StatusSection = class StatusSection extends i {
         super.connectedCallback();
         this._interval = setInterval(() => {
             this._tick++;
-        }, 10000);
+        }, 1000);
     }
     disconnectedCallback() {
         super.disconnectedCallback();
         if (this._interval)
             clearInterval(this._interval);
+    }
+    _formatDuration(createdAt, runAt) {
+        const ms = new Date(runAt).getTime() - new Date(createdAt).getTime();
+        const mins = Math.round(ms / 60000);
+        if (mins < 60)
+            return `${mins} min`;
+        const h = Math.floor(mins / 60);
+        const m = mins % 60;
+        return m === 0 ? `${h}h` : `${h}h ${m}min`;
     }
     _cancelSchedule(scheduleId) {
         this.dispatchEvent(new CustomEvent("cancel-schedule", {
@@ -764,39 +1271,67 @@ let StatusSection = class StatusSection extends i {
             composed: true,
         }));
     }
-    _renderStatusBadge(status) {
-        const color = STATUS_COLORS[status] ?? "#9e9e9e";
-        return b `
-      <span class="status-badge" style="background:${color}">${status}</span>
-    `;
+    _restartSchedule(schedule) {
+        this.dispatchEvent(new CustomEvent("restart-schedule", {
+            detail: schedule,
+            bubbles: true,
+            composed: true,
+        }));
+    }
+    _statusLabel(status) {
+        const key = status;
+        return t(this.lang, key) ?? status;
+    }
+    _actionLabel(action) {
+        const key = action;
+        return t(this.lang, key) ?? action;
+    }
+    _progressPercent(schedule) {
+        const created = new Date(schedule.created_at).getTime();
+        const runAt = new Date(schedule.run_at).getTime();
+        const now = Date.now();
+        const total = runAt - created;
+        if (total <= 0)
+            return 100;
+        return Math.min(100, Math.max(0, ((now - created) / total) * 100));
     }
     _renderScheduleItem(schedule) {
         const isActive = schedule.status === "scheduled" || schedule.status === "running";
+        const color = STATUS_COLORS[schedule.status] ?? "#9e9e9e";
+        void this._tick;
         return b `
       <div class="schedule-item">
         <div class="schedule-info">
-          <div class="schedule-entity">${schedule.entity_id}</div>
+          <div class="schedule-entity">${getFriendlyName(this.hass, schedule.entity_id)}</div>
           <div class="schedule-details">
-            ${schedule.action} · ${formatAbsoluteTime(schedule.run_at)}
+            ${this._actionLabel(schedule.action)} · ${formatAbsoluteTime(schedule.run_at)}
           </div>
           ${isActive
-            ? b `<div class="schedule-countdown">
-                ⏱ ${formatRemainingTime(schedule.run_at)}
-              </div>`
+            ? b `<div class="schedule-countdown">${formatRemainingTime(schedule.run_at)}</div>`
+            : ""}
+          ${isActive && this.showProgressBar
+            ? b `
+                <div class="progress-track">
+                  <div class="progress-bar" style="width:${this._progressPercent(schedule)}%"></div>
+                </div>
+              `
             : ""}
           ${schedule.last_error
-            ? b `<div class="schedule-error">⚠ ${schedule.last_error}</div>`
+            ? b `<div class="schedule-error">${schedule.last_error}</div>`
             : ""}
         </div>
         <div class="schedule-actions">
-          ${this._renderStatusBadge(schedule.status)}
+          <span class="status-badge" style="background:${color}">
+            ${this._statusLabel(schedule.status)}
+          </span>
           ${isActive
             ? b `
                 <button
                   class="btn-cancel-item"
                   @click=${() => this._cancelSchedule(schedule.schedule_id)}
+                  type="button"
                 >
-                  Cancel
+                  ${t(this.lang, "cancel")}
                 </button>
               `
             : ""}
@@ -810,23 +1345,29 @@ let StatusSection = class StatusSection extends i {
         const allVisible = [...activeSchedules, ...errorSchedules];
         return b `
       ${allVisible.length === 0
-            ? b `<div class="idle-message">No active timers</div>`
+            ? b `<div class="idle-message">${t(this.lang, "no_timers")}</div>`
             : b `
             <div class="schedule-list">
               ${allVisible.map((s) => this._renderScheduleItem(s))}
             </div>
           `}
 
-      ${this.showHistory && this.history.length > 0
+      ${this.showHistory
             ? b `
             <div class="history-section">
-              <button
-                class="history-toggle"
-                @click=${() => (this._showHistory = !this._showHistory)}
-              >
-                ${this._showHistory ? "▲ Hide" : "▼ Show"} history
-                (${this.history.length})
-              </button>
+              ${this.history.length === 0
+                ? b `<div class="idle-message" style="font-size:0.82em">${this.lang.startsWith("de") ? "Noch kein Verlauf vorhanden." : "No history yet."}</div>`
+                : b `
+                    <button
+                      class="history-toggle"
+                      @click=${() => (this._showHistory = !this._showHistory)}
+                      type="button"
+                    >
+                      ${this._showHistory
+                    ? t(this.lang, "hide_history")
+                    : t(this.lang, "show_history")}
+                      (${this.history.length})
+                    </button>`}
               ${this._showHistory
                 ? b `
                     <div class="history-list">
@@ -836,8 +1377,27 @@ let StatusSection = class StatusSection extends i {
                     .slice(0, 20)
                     .map((s) => b `
                             <div class="history-item">
-                              <span>${s.entity_id} · ${s.action}</span>
-                              ${this._renderStatusBadge(s.status)}
+                              <div class="history-info">
+                                <span class="history-name">${getFriendlyName(this.hass, s.entity_id)}</span>
+                                <span class="history-meta">
+                                  ${this._actionLabel(s.action)}
+                                  · ${this._formatDuration(s.created_at, s.run_at)}
+                                </span>
+                              </div>
+                              <div class="history-actions">
+                                <span
+                                  class="status-badge"
+                                  style="background:${STATUS_COLORS[s.status] ?? "#9e9e9e"}"
+                                >
+                                  ${this._statusLabel(s.status)}
+                                </span>
+                                <button
+                                  class="btn-restart"
+                                  type="button"
+                                  @click=${() => this._restartSchedule(s)}
+                                  title="${t(this.lang, "restart")}"
+                                >↺</button>
+                              </div>
                             </div>
                           `)}
                     </div>
@@ -859,8 +1419,8 @@ StatusSection.styles = i$3 `
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      padding: 10px 12px;
-      border-radius: 6px;
+      padding: 12px;
+      border-radius: 8px;
       border: 1px solid var(--divider-color, #e0e0e0);
       background: var(--secondary-background-color, #fafafa);
       gap: 8px;
@@ -871,7 +1431,7 @@ StatusSection.styles = i$3 `
     }
     .schedule-entity {
       font-weight: 500;
-      font-size: 0.95em;
+      font-size: 0.9em;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -885,7 +1445,20 @@ StatusSection.styles = i$3 `
       font-size: 0.8em;
       color: var(--primary-color);
       font-weight: 500;
-      margin-top: 2px;
+      margin-top: 3px;
+    }
+    .progress-track {
+      height: 4px;
+      background: var(--divider-color, #e0e0e0);
+      border-radius: 2px;
+      margin-top: 6px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      background: var(--primary-color);
+      border-radius: 2px;
+      transition: width 1s linear;
     }
     .schedule-error {
       font-size: 0.8em;
@@ -896,10 +1469,11 @@ StatusSection.styles = i$3 `
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: 4px;
+      gap: 6px;
+      flex-shrink: 0;
     }
     .status-badge {
-      font-size: 0.75em;
+      font-size: 0.72em;
       padding: 2px 8px;
       border-radius: 12px;
       color: #fff;
@@ -907,13 +1481,15 @@ StatusSection.styles = i$3 `
       font-weight: 500;
     }
     .btn-cancel-item {
-      padding: 4px 8px;
+      padding: 4px 10px;
       background: transparent;
       border: 1px solid var(--error-color, #f44336);
       color: var(--error-color, #f44336);
-      border-radius: 4px;
+      border-radius: 6px;
       cursor: pointer;
-      font-size: 0.8em;
+      font-size: 0.78em;
+      font-weight: 500;
+      transition: background 0.15s, color 0.15s;
     }
     .btn-cancel-item:hover {
       background: var(--error-color, #f44336);
@@ -924,7 +1500,7 @@ StatusSection.styles = i$3 `
       font-size: 0.9em;
       font-style: italic;
       text-align: center;
-      padding: 12px;
+      padding: 16px;
     }
     .history-section {
       margin-top: 12px;
@@ -932,10 +1508,13 @@ StatusSection.styles = i$3 `
     .history-toggle {
       background: none;
       border: none;
-      color: var(--secondary-text-color);
+      color: var(--primary-color);
       cursor: pointer;
       font-size: 0.85em;
       padding: 4px 0;
+      font-weight: 500;
+    }
+    .history-toggle:hover {
       text-decoration: underline;
     }
     .history-list {
@@ -945,16 +1524,57 @@ StatusSection.styles = i$3 `
       gap: 4px;
     }
     .history-item {
-      font-size: 0.8em;
-      padding: 6px 10px;
-      border-radius: 4px;
+      font-size: 0.82em;
+      padding: 8px 10px;
+      border-radius: 6px;
       background: var(--secondary-background-color, #fafafa);
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 8px;
     }
+    .history-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      min-width: 0;
+      flex: 1;
+    }
+    .history-name {
+      font-weight: 500;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .history-meta {
+      font-size: 0.82em;
+      color: var(--secondary-text-color);
+    }
+    .history-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .btn-restart {
+      background: transparent;
+      border: 1px solid var(--primary-color);
+      color: var(--primary-color);
+      border-radius: 6px;
+      padding: 2px 8px;
+      cursor: pointer;
+      font-size: 1em;
+      line-height: 1.4;
+      transition: background 0.15s, color 0.15s;
+    }
+    .btn-restart:hover {
+      background: var(--primary-color);
+      color: var(--text-primary-color, #fff);
+    }
   `;
+__decorate([
+    n({ attribute: false })
+], StatusSection.prototype, "hass", void 0);
 __decorate([
     n({ type: Array })
 ], StatusSection.prototype, "schedules", void 0);
@@ -965,52 +1585,186 @@ __decorate([
     n({ type: Boolean })
 ], StatusSection.prototype, "showHistory", void 0);
 __decorate([
+    n({ type: Boolean })
+], StatusSection.prototype, "showProgressBar", void 0);
+__decorate([
+    n()
+], StatusSection.prototype, "lang", void 0);
+__decorate([
     r()
 ], StatusSection.prototype, "_tick", void 0);
 __decorate([
     r()
 ], StatusSection.prototype, "_showHistory", void 0);
 StatusSection = __decorate([
-    t("once-timer-status-section")
+    t$1("once-timer-status-section")
 ], StatusSection);
 
 let OnceTimerCardEditor = class OnceTimerCardEditor extends i {
     setConfig(config) {
         this._config = config;
     }
-    _valueChanged(field, value) {
+    _set(field, value) {
         if (!this._config)
             return;
-        const newConfig = { ...this._config, [field]: value };
         this.dispatchEvent(new CustomEvent("config-changed", {
-            detail: { config: newConfig },
+            detail: { config: { ...this._config, [field]: value } },
             bubbles: true,
             composed: true,
         }));
     }
+    _toggle(field, e) {
+        this._set(field, e.target.checked);
+    }
+    _parseDelays(raw) {
+        return raw
+            .split(",")
+            .map((s) => parseFloat(s.trim()))
+            .filter((n) => !isNaN(n) && n > 0);
+    }
+    _renderToggle(label, desc, checked, onChange, indent = false) {
+        return b `
+      <div class="toggle-row ${indent ? "indent" : ""}">
+        <div class="toggle-label">
+          <span>${label}</span>
+          <span class="toggle-desc">${desc}</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" ?checked=${checked} @change=${onChange} />
+          <span class="slider"></span>
+        </label>
+      </div>
+    `;
+    }
     render() {
         if (!this._config)
             return b ``;
+        const c = this._config;
+        const quickDelays = (c.quick_delays ?? DEFAULT_QUICK_DELAYS).join(", ");
+        const lockTarget = c.lock_target ?? false;
+        const showQuickDelays = c.show_quick_delays ?? true;
+        const showStatus = c.show_status ?? true;
+        const quickTargets = c.quick_targets ?? [];
         return b `
       <div class="editor">
+
+        <!-- ── GENERAL ── -->
+        <div class="section-label">General</div>
         <div class="field">
           <label>Title</label>
           <input
             type="text"
-            .value=${this._config.title ?? ""}
-            @input=${(e) => this._valueChanged("title", e.target.value)}
+            .value=${c.title ?? ""}
+            @input=${(e) => this._set("title", e.target.value)}
             placeholder="Once Timer"
           />
         </div>
 
+        <!-- ── TARGET ── -->
+        <div class="divider"></div>
+        <div class="section-label">Target</div>
+
         <div class="field">
-          <label>Show history</label>
-          <input
-            type="checkbox"
-            ?checked=${this._config.show_history ?? false}
-            @change=${(e) => this._valueChanged("show_history", e.target.checked)}
-          />
+          <label>Default entity</label>
+          <div class="entity-row">
+            <ha-selector
+              .hass=${this.hass}
+              .selector=${{ entity: {} }}
+              .value=${c.default_entity_id ?? ""}
+              @value-changed=${(e) => this._set("default_entity_id", e.detail.value || undefined)}
+            ></ha-selector>
+            ${c.default_entity_id
+            ? b `
+                  <button
+                    class="btn-remove"
+                    type="button"
+                    @click=${() => this._set("default_entity_id", undefined)}
+                  >✕</button>
+                `
+            : ""}
+          </div>
+          <span class="field-hint">Pre-selects this entity when the card loads.</span>
         </div>
+
+        ${this._renderToggle("Lock target", "Hide the target section — entity is fixed", lockTarget, (e) => this._toggle("lock_target", e))}
+
+        ${!lockTarget ? b `
+          ${this._renderToggle("Show entity search", "Hide when only using quick targets", c.show_target_search ?? true, (e) => this._toggle("show_target_search", e), true)}
+
+          <div class="field indent">
+            <label>Quick targets</label>
+            ${quickTargets.length > 0 ? b `
+              <div class="target-chips">
+                ${quickTargets.map((id, i) => b `
+                    <div class="target-chip">
+                      <span class="target-chip-name">${String(this.hass?.states[id]?.attributes["friendly_name"] ?? id)}</span>
+                      <button
+                        class="target-chip-remove"
+                        type="button"
+                        @click=${() => {
+            const updated = [...quickTargets];
+            updated.splice(i, 1);
+            this._set("quick_targets", updated);
+        }}
+                      >✕</button>
+                    </div>
+                  `)}
+              </div>
+            ` : ""}
+            <ha-selector
+              .hass=${this.hass}
+              .selector=${{ entity: {} }}
+              .value=${""}
+              @value-changed=${(e) => {
+            if (!e.detail.value)
+                return;
+            this._set("quick_targets", [...quickTargets, e.detail.value]);
+        }}
+            ></ha-selector>
+            <span class="field-hint">One-click buttons above the entity search.</span>
+          </div>
+        ` : ""}
+
+        <!-- ── TIME ── -->
+        <div class="divider"></div>
+        <div class="section-label">Time</div>
+
+        ${this._renderToggle("Quick delay buttons", "One-click shortcuts: 30 min, 1h, …", showQuickDelays, (e) => this._toggle("show_quick_delays", e))}
+
+        ${showQuickDelays ? b `
+          <div class="field indent">
+            <label>Delay values (minutes, comma-separated)</label>
+            <input
+              type="text"
+              .value=${quickDelays}
+              placeholder="15, 30, 60, 120"
+              @change=${(e) => this._set("quick_delays", this._parseDelays(e.target.value))}
+            />
+          </div>
+        ` : ""}
+
+        ${this._renderToggle("Show time input", "Hide when only using quick delay buttons", c.show_time_input ?? true, (e) => this._toggle("show_time_input", e))}
+
+        <!-- ── ACTIONS ── -->
+        <div class="divider"></div>
+        <div class="section-label">Actions</div>
+
+        ${this._renderToggle("Show presets", "Load and save timer configurations", c.show_presets ?? true, (e) => this._toggle("show_presets", e))}
+
+        ${this._renderToggle("Show \"Cancel all\" button", "Appears when one or more timers are active", c.show_cancel_all ?? true, (e) => this._toggle("show_cancel_all", e))}
+
+        <!-- ── STATUS ── -->
+        <div class="divider"></div>
+        <div class="section-label">Status</div>
+
+        ${this._renderToggle("Show progress bar", "Visual countdown on active timers", c.show_progress_bar ?? true, (e) => this._toggle("show_progress_bar", e))}
+
+        ${this._renderToggle("Show status section", "Active timers list — badge in title shows count when hidden", showStatus, (e) => this._toggle("show_status", e))}
+
+        ${showStatus ? b `
+          ${this._renderToggle("Show history", "List of past timer executions", c.show_history ?? false, (e) => this._toggle("show_history", e), true)}
+        ` : ""}
+
       </div>
     `;
     }
@@ -1019,26 +1773,175 @@ OnceTimerCardEditor.styles = i$3 `
     .editor {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      padding: 8px;
+      gap: 2px;
+      padding: 8px 0;
+    }
+    .section-label {
+      font-size: 0.72em;
+      font-weight: 700;
+      color: var(--secondary-text-color);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 8px 0 4px;
+    }
+    .divider {
+      height: 1px;
+      background: var(--divider-color, #e0e0e0);
+      margin: 10px 0 2px;
     }
     .field {
       display: flex;
       flex-direction: column;
       gap: 4px;
+      padding: 4px 0;
+    }
+    .field.indent,
+    .toggle-row.indent {
+      padding-left: 14px;
+      border-left: 2px solid var(--divider-color, #e0e0e0);
+      margin-left: 2px;
     }
     label {
-      font-size: 0.85em;
+      font-size: 0.82em;
       color: var(--secondary-text-color);
       font-weight: 500;
     }
     input[type="text"] {
-      padding: 8px;
+      padding: 8px 10px;
       border: 1px solid var(--divider-color, #e0e0e0);
-      border-radius: 4px;
+      border-radius: 6px;
       background: var(--card-background-color, #fff);
       color: var(--primary-text-color);
-      font-size: 1em;
+      font-size: 0.95em;
+    }
+    input[type="text"]:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+    .field-hint {
+      font-size: 0.76em;
+      color: var(--secondary-text-color);
+      margin-top: 2px;
+    }
+    .entity-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .entity-row ha-selector {
+      flex: 1;
+      min-width: 0;
+    }
+    .btn-remove {
+      background: transparent;
+      border: 1px solid var(--error-color, #f44336);
+      color: var(--error-color, #f44336);
+      border-radius: 6px;
+      padding: 4px 8px;
+      cursor: pointer;
+      font-size: 0.8em;
+      flex-shrink: 0;
+      transition: background 0.15s, color 0.15s;
+    }
+    .btn-remove:hover {
+      background: var(--error-color, #f44336);
+      color: #fff;
+    }
+    .target-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .target-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px 4px 12px;
+      border-radius: 16px;
+      background: var(--secondary-background-color, #f5f5f5);
+      border: 1px solid var(--divider-color, #e0e0e0);
+      font-size: 0.85em;
+    }
+    .target-chip-name {
+      color: var(--primary-text-color);
+      font-weight: 500;
+      white-space: nowrap;
+      max-width: 160px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .target-chip-remove {
+      background: transparent;
+      border: none;
+      color: var(--secondary-text-color);
+      cursor: pointer;
+      font-size: 0.85em;
+      padding: 0;
+      line-height: 1;
+      flex-shrink: 0;
+      transition: color 0.15s;
+    }
+    .target-chip-remove:hover {
+      color: var(--error-color, #f44336);
+    }
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0;
+      gap: 12px;
+    }
+    .toggle-label {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex: 1;
+    }
+    .toggle-label span:first-child {
+      font-size: 0.9em;
+      color: var(--primary-text-color);
+    }
+    .toggle-desc {
+      font-size: 0.78em;
+      color: var(--secondary-text-color);
+    }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      inset: 0;
+      background: var(--divider-color, #ccc);
+      border-radius: 22px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .slider::before {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      left: 3px;
+      top: 3px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.2s;
+    }
+    .switch input:checked + .slider {
+      background: var(--primary-color);
+    }
+    .switch input:checked + .slider::before {
+      transform: translateX(18px);
     }
   `;
 __decorate([
@@ -1048,7 +1951,7 @@ __decorate([
     r()
 ], OnceTimerCardEditor.prototype, "_config", void 0);
 OnceTimerCardEditor = __decorate([
-    t(CARD_EDITOR_NAME)
+    t$1(CARD_EDITOR_NAME)
 ], OnceTimerCardEditor);
 
 let OnceTimerCard = class OnceTimerCard extends i {
@@ -1062,33 +1965,43 @@ let OnceTimerCard = class OnceTimerCard extends i {
         this._loading = false;
         this._error = null;
         this._selectedPreset = "";
+        this._repeat = false;
+    }
+    get _lang() {
+        return this.hass?.language ?? "en";
     }
     setConfig(config) {
         if (!config)
             throw new Error("Invalid configuration");
         this._config = config;
+        // Apply default only when locked (entity is always fixed) or on first load (no selection yet)
+        if (config.default_entity_id && (config.lock_target || !this._selectedEntityId)) {
+            this._selectedEntityId = config.default_entity_id;
+        }
     }
     static getConfigElement() {
         return document.createElement(CARD_EDITOR_NAME);
     }
     static getStubConfig() {
-        return { type: `custom:${CARD_NAME}`, title: "Once Timer", show_history: true };
+        return {
+            type: `custom:${CARD_NAME}`,
+            title: "Once Timer",
+            show_history: false,
+            show_quick_delays: true,
+            show_presets: true,
+            show_cancel_all: true,
+            show_progress_bar: true,
+            allow_repeat: false,
+        };
     }
-    _getSchedules() {
-        // The NextRunSensor exposes all schedules in its attributes
-        const entry = Object.values(this.hass.states).find((e) => e.entity_id.startsWith("sensor.") && e.entity_id.endsWith("_next_run"));
-        const schedules = entry?.attributes?.["schedules"];
-        return Array.isArray(schedules) ? schedules : [];
-    }
-    _getHistory() {
-        const entry = Object.values(this.hass.states).find((e) => e.entity_id.startsWith("sensor.") && e.entity_id.endsWith("_state"));
-        const history = entry?.attributes?.["history"];
-        return Array.isArray(history) ? history : [];
-    }
-    _getPresets() {
-        const entry = Object.values(this.hass.states).find((e) => e.entity_id.startsWith("sensor.") && e.entity_id.endsWith("_state"));
-        const presets = entry?.attributes?.["presets"];
-        return Array.isArray(presets) ? presets : [];
+    _getTimerData() {
+        const entry = Object.values(this.hass.states).find((e) => e.entity_id.includes("once_timer"));
+        const attr = entry?.attributes ?? {};
+        return {
+            schedules: Array.isArray(attr["schedules"]) ? attr["schedules"] : [],
+            history: Array.isArray(attr["history"]) ? attr["history"] : [],
+            presets: Array.isArray(attr["presets"]) ? attr["presets"] : [],
+        };
     }
     async _handleStart() {
         this._error = null;
@@ -1115,7 +2028,7 @@ let OnceTimerCard = class OnceTimerCard extends i {
             });
         }
         catch (err) {
-            this._error = `Failed to start timer: ${err}`;
+            this._error = `${err}`;
         }
         finally {
             this._loading = false;
@@ -1126,13 +2039,15 @@ let OnceTimerCard = class OnceTimerCard extends i {
             await cancelTimer(this.hass, scheduleId);
         }
         catch (err) {
-            this._error = `Failed to cancel: ${err}`;
+            this._error = `${err}`;
         }
     }
     async _handleCancelAll() {
-        const activeSchedules = this._getSchedules().filter((s) => s.status === "scheduled" || s.status === "running");
-        for (const s of activeSchedules) {
-            await this._handleCancelSchedule(s.schedule_id);
+        const { schedules } = this._getTimerData();
+        for (const s of schedules) {
+            if (s.status === "scheduled" || s.status === "running") {
+                await this._handleCancelSchedule(s.schedule_id);
+            }
         }
     }
     async _handleLoadPreset() {
@@ -1140,8 +2055,7 @@ let OnceTimerCard = class OnceTimerCard extends i {
             return;
         try {
             await loadPreset(this.hass, this._selectedPreset);
-            const presets = this._getPresets();
-            const preset = presets.find((p) => p.name === this._selectedPreset);
+            const preset = this._getTimerData().presets.find((p) => p.name === this._selectedPreset);
             if (preset) {
                 this._selectedEntityId = preset.entity_id;
                 this._selectedAction = preset.action;
@@ -1152,11 +2066,11 @@ let OnceTimerCard = class OnceTimerCard extends i {
             }
         }
         catch (err) {
-            this._error = `Failed to load preset: ${err}`;
+            this._error = `${err}`;
         }
     }
     async _handleSavePreset() {
-        const name = prompt("Preset name:");
+        const name = prompt(t(this._lang, "save_preset"));
         if (!name)
             return;
         try {
@@ -1169,117 +2083,206 @@ let OnceTimerCard = class OnceTimerCard extends i {
             });
         }
         catch (err) {
-            this._error = `Failed to save preset: ${err}`;
+            this._error = `${err}`;
+        }
+    }
+    async _handleDeletePreset() {
+        if (!this._selectedPreset)
+            return;
+        try {
+            await deletePreset(this.hass, this._selectedPreset);
+            this._selectedPreset = "";
+        }
+        catch (err) {
+            this._error = `${err}`;
+        }
+    }
+    async _handleRestartFromHistory(schedule) {
+        this._error = null;
+        this._loading = true;
+        try {
+            const originalMs = new Date(schedule.run_at).getTime() - new Date(schedule.created_at).getTime();
+            const delayMinutes = Math.max(1, Math.round(originalMs / 60000));
+            await startTimer(this.hass, {
+                entity_id: schedule.entity_id,
+                action: schedule.action,
+                mode: "delay",
+                delay_minutes: delayMinutes,
+            });
+        }
+        catch (err) {
+            this._error = `${err}`;
+        }
+        finally {
+            this._loading = false;
         }
     }
     render() {
         if (!this._config)
             return b ``;
-        const schedules = this._getSchedules();
-        const history = this._getHistory();
-        const presets = this._getPresets();
+        const lang = this._lang;
+        const { schedules, history, presets } = this._getTimerData();
         const allowedDomains = this._config.allowed_domains ?? DEFAULT_ALLOWED_DOMAINS;
+        const showQuickDelays = this._config.show_quick_delays ?? true;
+        const quickDelays = this._config.quick_delays ?? DEFAULT_QUICK_DELAYS;
+        const showPresets = this._config.show_presets ?? true;
+        const showCancelAll = this._config.show_cancel_all ?? true;
+        const showProgressBar = this._config.show_progress_bar ?? true;
+        const allowRepeat = false; // not yet implemented in backend
+        const quickTargets = this._config.quick_targets ?? [];
+        const showTargetSearch = this._config.show_target_search ?? true;
+        const showTimeInput = this._config.show_time_input ?? true;
+        const lockTarget = this._config.lock_target ?? false;
+        const showStatus = this._config.show_status ?? true;
         const activeSchedules = schedules.filter((s) => s.status === "scheduled" || s.status === "running");
         return b `
       <ha-card>
         ${this._config.title
-            ? b `<div class="card-header">${this._config.title}</div>`
+            ? b `
+              <div class="card-header">
+                ${this._config.title}
+                ${!showStatus && activeSchedules.length > 0
+                ? b `<span class="active-badge">${activeSchedules.length}</span>`
+                : ""}
+              </div>`
             : ""}
 
         <!-- Presets -->
-        ${presets.length > 0
+        ${showPresets
             ? b `
               <div class="section">
-                <div class="section-title">Presets</div>
-                <div class="preset-section">
-                  <select
-                    .value=${this._selectedPreset}
-                    @change=${(e) => (this._selectedPreset = e.target.value)}
-                  >
-                    <option value="">-- Select preset --</option>
-                    ${presets.map((p) => b `
-                        <option value=${p.name} ?selected=${p.name === this._selectedPreset}>
-                          ${p.is_favorite ? "★ " : ""}${p.name}
-                        </option>
-                      `)}
-                  </select>
-                  <button class="btn-load-preset" @click=${this._handleLoadPreset}>
-                    Load
-                  </button>
-                </div>
+                <div class="section-title">${t(lang, "presets")}</div>
+                ${presets.length > 0
+                ? b `
+                      <div class="preset-row">
+                        <select
+                          .value=${this._selectedPreset}
+                          @change=${(e) => (this._selectedPreset = e.target.value)}
+                        >
+                          <option value="">${t(lang, "no_preset")}</option>
+                          ${presets.map((p) => b `
+                              <option value=${p.name} ?selected=${p.name === this._selectedPreset}>
+                                ${p.is_favorite ? "★ " : ""}${p.name}
+                              </option>
+                            `)}
+                        </select>
+                        <button class="btn-secondary" @click=${this._handleLoadPreset} type="button">
+                          ${t(lang, "load")}
+                        </button>
+                        ${this._selectedPreset
+                    ? b `
+                              <button class="btn-delete-preset" @click=${this._handleDeletePreset} type="button"
+                                title="${t(lang, "delete")}">✕</button>
+                            `
+                    : ""}
+                      </div>
+                    `
+                : b `<div class="empty-hint">${lang.startsWith("de") ? "Noch keine Vorlagen — wähle ein Ziel und speichere unten." : "No presets yet — select a target and save below."}</div>`}
               </div>
             `
             : ""}
 
-        <!-- Section 1: Target -->
+        <!-- Target -->
+        ${lockTarget && this._selectedEntityId
+            ? b `
+              <div class="section">
+                <div class="locked-target-chip">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                    <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                  </svg>
+                  ${getFriendlyName(this.hass, this._selectedEntityId)}
+                </div>
+              </div>
+            `
+            : !lockTarget ? b `
         <div class="section">
-          <div class="section-title">Target</div>
+          <div class="section-title">${t(lang, "target")}</div>
           <once-timer-target-section
             .hass=${this.hass}
             .selectedEntityId=${this._selectedEntityId}
             .allowedDomains=${allowedDomains}
+            .quickTargets=${quickTargets}
+            .showSearch=${showTargetSearch}
+            .lang=${lang}
             @entity-changed=${(e) => (this._selectedEntityId = e.detail)}
           ></once-timer-target-section>
-        </div>
+        </div>` : ""}
 
-        <!-- Section 2: Action -->
+        <!-- Action -->
         <div class="section">
-          <div class="section-title">Action</div>
+          <div class="section-title">${t(lang, "action")}</div>
           <once-timer-action-section
             .selectedAction=${this._selectedAction}
+            .entityId=${this._selectedEntityId}
+            .lang=${lang}
             @action-changed=${(e) => (this._selectedAction = e.detail)}
           ></once-timer-action-section>
         </div>
 
-        <!-- Section 3: Time -->
+        <!-- Time -->
+        ${showTimeInput || showQuickDelays ? b `
         <div class="section">
-          <div class="section-title">Time</div>
+          <div class="section-title">${t(lang, "time")}</div>
           <once-timer-time-section
             .mode=${this._mode}
             .delayMinutes=${this._delayMinutes}
             .runAt=${this._runAt}
+            .lang=${lang}
+            .showQuickDelays=${showQuickDelays}
+            .quickDelays=${quickDelays}
+            .showTimeInput=${showTimeInput}
             @mode-changed=${(e) => (this._mode = e.detail)}
             @delay-changed=${(e) => (this._delayMinutes = e.detail)}
             @run-at-changed=${(e) => (this._runAt = localDatetimeInputValue(new Date(e.detail)))}
           ></once-timer-time-section>
-        </div>
+        </div>` : ""}
 
-        <!-- Section 4: Controls -->
+        <!-- Controls -->
         <div class="section">
           <once-timer-control-section
             .loading=${this._loading}
             .disabled=${!this._selectedEntityId}
             .hasActive=${activeSchedules.length > 0}
+            .showCancelAll=${showCancelAll}
+            .allowRepeat=${allowRepeat}
+            .repeat=${this._repeat}
+            .lang=${lang}
             @start=${this._handleStart}
             @cancel-all=${this._handleCancelAll}
+            @repeat-changed=${(e) => (this._repeat = e.detail)}
           ></once-timer-control-section>
 
           ${this._error
-            ? b `<div class="error-message">⚠ ${this._error}</div>`
+            ? b `<div class="error-message">${this._error}</div>`
             : ""}
         </div>
 
-        <!-- Save as Preset -->
-        ${this._selectedEntityId
+        <!-- Save preset -->
+        ${showPresets && this._selectedEntityId
             ? b `
               <div class="section">
-                <button class="btn-load-preset" @click=${this._handleSavePreset}>
-                  💾 Save as Preset
+                <button class="btn-secondary full-width" @click=${this._handleSavePreset} type="button">
+                  ${t(lang, "save_preset")}
                 </button>
               </div>
             `
             : ""}
 
-        <!-- Section 5: Status -->
+        <!-- Status -->
+        ${showStatus ? b `
         <div class="section">
-          <div class="section-title">Status</div>
+          <div class="section-title">${t(lang, "status")}</div>
           <once-timer-status-section
+            .hass=${this.hass}
             .schedules=${schedules}
             .history=${history}
             .showHistory=${this._config.show_history ?? false}
+            .showProgressBar=${showProgressBar}
+            .lang=${lang}
             @cancel-schedule=${(e) => this._handleCancelSchedule(e.detail)}
+            @restart-schedule=${(e) => this._handleRestartFromHistory(e.detail)}
           ></once-timer-status-section>
-        </div>
+        </div>` : ""}
       </ha-card>
     `;
     }
@@ -1315,8 +2318,11 @@ __decorate([
 __decorate([
     r()
 ], OnceTimerCard.prototype, "_selectedPreset", void 0);
+__decorate([
+    r()
+], OnceTimerCard.prototype, "_repeat", void 0);
 OnceTimerCard = __decorate([
-    t(CARD_NAME)
+    t$1(CARD_NAME)
 ], OnceTimerCard);
 window.customCards = window.customCards ?? [];
 window.customCards.push({
