@@ -1995,12 +1995,16 @@ let OnceTimerCard = class OnceTimerCard extends i {
         };
     }
     _getTimerData() {
-        const entry = Object.values(this.hass.states).find((e) => e.entity_id.includes("once_timer"));
-        const attr = entry?.attributes ?? {};
+        const merged = {};
+        for (const entry of Object.values(this.hass.states)) {
+            if (entry.entity_id.includes("once_timer")) {
+                Object.assign(merged, entry.attributes);
+            }
+        }
         return {
-            schedules: Array.isArray(attr["schedules"]) ? attr["schedules"] : [],
-            history: Array.isArray(attr["history"]) ? attr["history"] : [],
-            presets: Array.isArray(attr["presets"]) ? attr["presets"] : [],
+            schedules: Array.isArray(merged["schedules"]) ? merged["schedules"] : [],
+            history: Array.isArray(merged["history"]) ? merged["history"] : [],
+            presets: Array.isArray(merged["presets"]) ? merged["presets"] : [],
         };
     }
     async _handleStart() {
